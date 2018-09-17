@@ -10,7 +10,14 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 
 module.exports = passport => {
-   passport.use(new JwtStrategy(opts, (jwtPayload, done) => {
-       console.log(jwtPayload);         
+   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
+       User.findById(jwt_payload.id)
+            .then(user => {
+                if(user){
+                    return done(null, user);
+                }
+                return done(null, false);
+            })   
+            .catch(err => console.log(err));      
    }))         
 }
