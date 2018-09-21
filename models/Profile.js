@@ -31,7 +31,6 @@ const ProfileSchema = new Schema({
     },
     bio:{
       type: String,
-      required: true
     },
     githubusername:{
        type: String
@@ -75,7 +74,7 @@ const ProfileSchema = new Schema({
                 type:String,
                 required:true
                },   
-               fieldofstudy:{
+               fieldOfStudy:{
                 type:String,
                 required:true
                }, 
