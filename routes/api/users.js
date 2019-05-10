@@ -100,6 +100,7 @@ router.post('/login', (req, res) => {
                  secret.secretOrKey, 
                  {expiresIn: 3600},
                  (err, token) => {
+                   if(err) throw err;
                    res.json({ 
                         succes: true,
                         token: 'Bearer ' + token       
